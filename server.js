@@ -12,13 +12,16 @@
 
 const http = require('http');
 
-function onRequest(request, response) {
-    console.log('Request recieved Will');
-    response.writeHead(200, { 'Content-Type': 'text/plain' });
-    response.write('hello will world');
-    response.end();
+function start() {
+    function onRequest(request, response) {
+        console.log('Request recieved Will');
+        response.writeHead(200, { 'Content-Type': 'text/plain' });
+        response.write('hello will world');
+        response.end();
+    }
+
+    http.createServer(onRequest).listen(8000);
 }
-
-http.createServer(onRequest).listen(8000);
-
 console.group('Server is fully functional Will');
+
+exports.start = start;
