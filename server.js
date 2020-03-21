@@ -13,14 +13,14 @@
 const http = require('http');
 const url = require('url');
 
-function start(route) {
+function start(route, handle) {
     function onRequest(request, response) {
         const pathname = url.parse(request.url).pathname;
         
         
         console.log('Request for ' + pathname + ' recieved.');
        
-        route(pathname);
+        route(handle, pathname);
        
        
         response.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -30,6 +30,6 @@ function start(route) {
 
     http.createServer(onRequest).listen(8000);
 }
-console.group('Server is fully functional Will');
+console.log('Server has started Will');
 
 exports.start = start;
