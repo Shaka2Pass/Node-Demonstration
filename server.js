@@ -1,35 +1,15 @@
-// //requires the http module that ships with Node.js and is accessible through the http variable.
-// const http = require('http');
-// //createServer as a mothod called listen and takes a numeric port number our http servier is going to listen on. 
-// http.createServer(function(request, response){
-//     console.log('Request Recieved Will');
-//     response.writeHead(200, { 'Content-Type': 'text/plain' });
-//     response.write('hello world');
-//     response.end();
-// }).listen(8000);
-
-// console.log(`Server has started.`);
-
 const http = require('http');
 const url = require('url');
 
 function start(route, handle) {
     function onRequest(request, response) {
-        const pathname = url.parse(request.url).pathname;
-        
-        
-        console.log('Request for ' + pathname + ' recieved.');
-       
-        route(handle, pathname);
-       
-       
-        response.writeHead(200, { 'Content-Type': 'text/plain' });
-        response.write('hello will world');
-        response.end();
+        const pathname = url.parse(request.url).pathname; console.log('Request for ' + pathname + 'recieved.');
+
+        route(handle, pathname, response);
     }
 
-    http.createServer(onRequest).listen(8000);
+    http.createServer(onRequest).listen(8888);
+    console.log('Server has started, Will');
 }
-console.log('Server has started Will');
 
 exports.start = start;
