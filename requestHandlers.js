@@ -31,8 +31,8 @@ function upload(response, request) {
         console.log("parsing done");
         fs.rename(files.upload.path, "/tmp/test.png", function(error) {
             if (error) {
-                fs.unlink("/tmp/test.png");
-                fs.rename(files.upload.path, "/tmp/test.png");
+                // fs.unlinkSync("/tmp/test.png",);
+                fs.renameSync(files.upload.path, "/tmp/test.png");
             }
         });
     });
